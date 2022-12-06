@@ -1,4 +1,3 @@
-
 #Look for inactive users and computers and disable the accounts.
 $TimeStamp3M = (Get-Date).AddMonths(-3)
 
@@ -23,7 +22,6 @@ if ($InactiveComputers.Count -gt 0){
 } else {
     Write-Output "All Computers are active!"
 }
-
 
 #Processing disabled Users and Computers
 $InactiveUsersOUName = 'Inactive Users'
@@ -62,9 +60,3 @@ if ($DisabledComputers.count -ne 0) {
 } else {
     Write-Output "Nothing to transfer to $InactiveComputersOUName OU!"
 }
-
-
-
-
-
-Get-ADUser -Filter * -Properties * | Select-Object Name, UserPrincipalName, LastLogonDate | Sort-Object -Property LastLogonDate -Descending
