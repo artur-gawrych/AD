@@ -6,7 +6,7 @@ $InactiveUsers = @(Get-ADUser -Filter * -Properties * | Where-Object { ($_.Enabl
 if ($InactiveUsers.Count -gt 0){
     foreach ($User in $InactiveUsers){
         Disable-ADAccount -Identity $User.SAMAccountName
-        Write-Output "Disabling Computer [ $($User.Name) - $($User.UserPrincipalName) ]"
+        Write-Output "Disabling User [ $($User.Name) - $($User.UserPrincipalName) ]"
     }
 } else {
     Write-Output "All Users are active!"
@@ -17,7 +17,7 @@ $InactiveComputers = @(Get-ADComputer -Filter * -Properties * | Where-Object { (
 if ($InactiveComputers.Count -gt 0){
     foreach ($Computer in $InactiveComputers){
         Disable-ADAccount -Identity $Computer
-        Write-Output "Disabling [ $($Computer.Name) ]"
+        Write-Output "Disabling Computer [ $($Computer.Name) ]"
     }
 } else {
     Write-Output "All Computers are active!"
