@@ -1,0 +1,1 @@
+Get-ADUser -Filter * -Properties * | Select-Object Name, SamAccountName, UserPrincipalName, Enabled, LastLogonDate  , @{Name="OU";Expression={$_.DistinguishedName.Split(',')[1].Split('=')[1]}} | Sort-Object Name | Export-Csv ".\Export_ADUsers.csv" -NoTypeInformation
