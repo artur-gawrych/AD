@@ -1,12 +1,11 @@
-
 function Get-ADInactiveUsers {
     [CmdletBinding()]
     param (
-        [DateTime] $TimeStamp
+        [string] $Months
     )
     
     begin {
-        $TimeStamp = (Get-Date).AddMonths(-1)
+        $TimeStamp = (Get-Date).AddMonths(-$Months)
         
     }
     

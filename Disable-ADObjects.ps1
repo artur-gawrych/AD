@@ -1,5 +1,5 @@
 #Look for inactive users and computers and disable the accounts.
-$TimeStamp3M = (Get-Date).AddMonths(-3)
+$TimeStamp3M = (Get-Date).AddMonths(-6)
 
 $InactiveUsers = @(Get-ADUser -Filter * -Properties * | Where-Object { ($_.Enabled -eq $True) -and ($_.LastLogonDate -lt $TimeStamp3M) })
 
@@ -16,7 +16,7 @@ $InactiveComputers = @(Get-ADComputer -Filter * -Properties * | Where-Object { (
 
 if ($InactiveComputers.Count -gt 0){
     foreach ($Computer in $InactiveComputers){
-        Disable-ADAccount -Identity $Computer
+        Disable-ADComputer -Identity $Computer
         Write-Output "Disabling Computer [ $($Computer.Name) ]"
     }
 } else {
