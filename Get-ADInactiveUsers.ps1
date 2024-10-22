@@ -14,6 +14,7 @@ function Get-ADInactiveUsers {
     }
     
     end {
+        Write-Output 'Inactive users who have not logged in during the last '$Months' months'
         Write-Output $InactiveUsers
     }
 }
