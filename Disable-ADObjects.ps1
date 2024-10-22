@@ -24,8 +24,8 @@ if ($InactiveComputers.Count -gt 0){
 }
 
 #Processing disabled Users and Computers
-$InactiveUsersOUName = 'Inactive Users'
-$InactiveComputersOUName = 'Inactive Computers'
+$InactiveUsersOUName = 'Disabled Users'
+$InactiveComputersOUName = 'Disabled Computers'
 $InactiveUsersOU = Get-ADOrganizationalUnit -Filter * | Where-Object { $_.Name -eq $InactiveUsersOUName }
 $InactiveComputersOU = Get-ADOrganizationalUnit -Filter * | Where-Object { $_.Name -eq $InactiveComputersOUName }
 
